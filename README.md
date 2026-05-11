@@ -2,7 +2,6 @@
 
 Example iOS app for `swift-drops-sdk`.
 
-Mirrors the Android example at a higher level:
 - a setup screen for auth token / tracker / DDC inputs
 - a dedicated payer-auth demo screen with a live event log
 
