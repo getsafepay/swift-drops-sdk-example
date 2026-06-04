@@ -151,11 +151,13 @@ final class SetupViewController: UIViewController {
             tracker: tracker,
             deviceDataCollectionJWT: ddcJwt,
             deviceDataCollectionURL: ddcUrl,
-            billing: BillingAddress(
-                street1: streetField.textField.text?.trimmingCharacters(in: .whitespaces) ?? "",
-                city: cityField.textField.text?.trimmingCharacters(in: .whitespaces) ?? "",
-                country: countryField.textField.text?.trimmingCharacters(in: .whitespaces) ?? ""
-            ),
+            billing: {
+                let street = streetField.textField.text?.trimmingCharacters(in: .whitespaces) ?? ""
+                let city = cityField.textField.text?.trimmingCharacters(in: .whitespaces) ?? ""
+                let country = countryField.textField.text?.trimmingCharacters(in: .whitespaces) ?? ""
+                guard !street.isEmpty || !city.isEmpty || !country.isEmpty else { return nil }
+                return BillingAddress(street1: street, city: city, country: country)
+            }(),
             authorizationOptions: AuthorizationOptions(
                 doCapture: doCaptureRow.toggle.isOn,
                 doCardOnFile: doCardOnFileRow.toggle.isOn
