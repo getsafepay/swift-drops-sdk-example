@@ -110,7 +110,7 @@ extension PayerAuthViewController: SafepayPayerAuthenticationDelegate {
     }
 
     func onPayerAuthenticationUnavailable(data: PayerAuthenticationData) {
-        appendLog(kind: "unavailable", message: "\(data)")
+        appendLog(kind: "unavailable", message: data.errorMessage ?? "\(data)")
     }
 
     func onSafepayError(error: SafepayErrorData) {
